@@ -8,14 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HR.LeaveManagement.Application.MappingProfiles
+namespace HR.LeaveManagement.Application.MappingProfiles;
+
+public class LeaveTypeProfile : Profile
 {
-    public class LeaveTypeProfile : Profile
+    public LeaveTypeProfile()
     {
-        public LeaveTypeProfile()
-        {
-            CreateMap<LeaveTypeDTO, LeaveType>().ReverseMap();
-            CreateMap<LeaveType, LeaveTypeDetailsDTO>();
-        }
+        CreateMap<LeaveTypeDTO, LeaveType>().ReverseMap();
+        CreateMap<LeaveType, LeaveTypeDetailsDTO>();
     }
 }
