@@ -1,4 +1,5 @@
 ﻿using HR.LeaveManagement.Application.Contracts.Persistance;
+using HR.LeaveManagement.Application.Exceptions;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,8 @@ public class DeleteLeaveTypeCommandHandler : IRequestHandler<DeleteLeaveTypeComm
         var leaveType = await _leaveTypeRepository.GetByIdAsync(request.Id);
 
         //verify that record exists
+        if (leaveType == null)
+            throw new NotFoundException(nameof(leaveType), request.Id);
 
         //remove from database
         await _leaveTypeRepository.DeleteAsync(leaveType);
